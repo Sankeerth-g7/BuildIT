@@ -1,0 +1,14 @@
+const dataCompare = (date, time) => {
+  let parts = date.split("-");
+  let odate = parts[1] + "-" + parts[0] + "-" + parts[2];
+  let split = time.slice(0, 2) + ":" + time.slice(2, 4);
+  return new Date(odate + " " + split) > new Date();
+}
+
+const dataCompare =(sdate,edate,stime,etime)=>{
+	let sparts =sdate.split("-");
+	let eparts =edate.split("-");
+	let olddate = sparts[1] + "-" + sparts[0] + "-" + sparts[2];
+	let newdate = eparts[1] + "-" + eparts[0] + "-" + eparts[2];
+	return 
+}

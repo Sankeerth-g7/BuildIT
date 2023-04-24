@@ -18,6 +18,10 @@
       </button>
       <br />
       <hr />
+      <select id="branch" onchange="filterTable()">
+        <option value="05">CSE</option>
+        <option value="04">ECE</option>
+      </select>
       <table class="w3-table w3-striped" id="results">
         <tr>
             <th>Username</th>
@@ -92,5 +96,29 @@
         $("#results").DataTable();
       });
     </script>
+    <script>
+      function filterTable() {
+        var branch = document.getElementById("branch").value;
+        var rows = document.getElementById("results").rows;
+        console.log(rows)
+        for (var i = 1; i < rows.length; i++) {
+          var row = rows[i];
+          var cells = row.getElementsByTagName("td");
+          var cell = cells[0];
+          console.log("branch:", branch);
+          console.log("cell:", cell.innerText.slice(6,8));
+          console.log("bool:", cell.innerText.slice(6,8).trim() === branch.trim());
+          console.log("branch_type:", typeof branch);
+          console.log("table_type:", typeof cell.innerText.slice(6,8));
+              
+          if (cell.innerText.slice(6,8) === branch || branch === "") {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        }
+      }
+    </script>
+    
   </body>
 </html>

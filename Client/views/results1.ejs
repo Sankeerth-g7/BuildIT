@@ -16,7 +16,12 @@
   <h2 style="text-align: center">Course Id - <%= datac.course %> </h2>
   <button onclick="exportTableToCSV('results.csv')">Download Results</button>
   <br><hr>
-  <table class="w3-table w3-striped">
+<label for="branch">Filter by branch:</label>
+    <select id="branch" onchange="filterTable()">
+      <option value="05">CSE</option>
+      <option value="04">ECE</option>
+    </select>
+  <table class="w3-table w3-striped" id="tdata">
     <tr>
         <th>Username</th>
         <th>Level 0</th>
@@ -37,12 +42,15 @@
   <br>
   <br>
 </div>
+
 <script src="/adminjs/classie.js"></script>
 <script src="/adminjs/gnmenu.js"></script>
 <script>
   new gnMenu( document.getElementById( 'gn-menu' ) );
 </script>
 <script>
+  console.log(datac)
+  console.log(data)
   function downloadCSV(csv, filename) {
   var csvFile;
   var downloadLink;
@@ -77,6 +85,29 @@ function exportTableToCSV(filename) {
 
   downloadCSV(csv.join("\n"), filename);
 }
+  </script>
+  <script>
+    function filterTable() {
+      var branch = document.getElementById("branch").value;
+      var rows = document.getElementById("tdata").rows;
+      console.log(rows)
+      for (var i = 1; i < rows.length; i++) {
+        var row = rows[i];
+        var cells = row.getElementsByTagName("td");
+        var cell = cells[0];
+        console.log("branch:", branch);
+        console.log("cell:", cell.innerText.slice(6,8));
+        console.log("bool:", cell.innerText.slice(6,8).trim() === branch.trim());
+        console.log("branch_type:", typeof branch);
+        console.log("table_type:", typeof cell.innerText.slice(6,8));
+            
+        if (cell.innerText.slice(6,8) === branch || branch === "") {
+          row.style.display = "";
+        } else {
+          row.style.display = "none";
+        }
+      }
+    }
   </script>
 </body>
 </html>
