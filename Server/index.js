@@ -23,7 +23,10 @@ const Participation = require("./models/participation.model").Participation;
 const McqParticipation =
   require("./models/participation.model").McqParticipation;
 const ParticipationTut = require("./models/participationTut.model");
-
+const contestLong = require("./models/mcqcontestLong.model.js");
+const Contest = require("./models/contest.model.js");
+const contestLongCtrl = require("./controllers/mcqLong.controller.js");
+const Course = require("../models/labCourse.model"); 
 // API Address
 const localServer = process.env.localServer;
 const port = process.env.PORT || 5000;
