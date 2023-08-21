@@ -2675,6 +2675,21 @@ app.get("/tutorials", checkSignIn, async (req, res, next) => {
   });
 });
 
+// app.get("/labs", checkSignIn, async (req, res, next) => {
+//   let options = {
+//     url: serverRoute + "/courses",
+//     method: "get",
+//     headers: {
+//       authorization: req.cookies.token,
+//     },
+//     json: true,
+//   };
+
+//   request(options, function (err, response, body) {
+//     res.render("labs", { imgUsername: req.cookies.username, data: body });
+//   });
+// });
+
 app.get(
   "/tutorials/:courseId/progress",
   checkSignIn,
@@ -3322,6 +3337,10 @@ app.get("/skillCertificate", checkSignIn, async (req, res) => {
 
 app.get("/pragnya", checkSignIn, async (req, res) => {
   res.render("extrasSections");
+});
+
+app.get("/labs", checkSignIn, async (req, res) => {
+  res.render("labs");
 });
 
 app.get("/emailSessions", checkSignIn, async (req, res) => {
